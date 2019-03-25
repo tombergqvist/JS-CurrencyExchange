@@ -1,8 +1,14 @@
-import * as myModule from './module.js'
 import * as Web from './WebModule.js'
 
-let element = document.createElement("p")
-    element.innerHTML = myModule.MyMethod()
-    document.body.appendChild(element)
+document.getElementById("convertBtn").addEventListener("click", function(){
+    let base = document.getElementById("base").value
+    let target = document.getElementById("target").value
+    let amount = document.getElementById("amount").value
 
-Web.getData()
+    let result = Web.exchange(base, target, amount)
+    result.then(setResult)
+})
+
+function setResult(result, target){
+    document.getElementById("result").innerHTML = result
+}
