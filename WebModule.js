@@ -20,3 +20,10 @@ export async function exchange(baseCurrency, targetCurrency, amount) {
     }
     return "Select a base and target currency!"
 }
+
+export async function getAllCurrencies() {
+    let data = await fetchData("https://api.exchangeratesapi.io/latest")
+    let currencies = Object.keys(data.rates)
+    currencies.push(data.base)
+    return currencies
+}
